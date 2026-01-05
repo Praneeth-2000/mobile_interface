@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './BottomNav.css';
+import '../css/BottomNav.css';
 
 const BottomNav = () => {
     const [activeTab, setActiveTab] = useState('home');

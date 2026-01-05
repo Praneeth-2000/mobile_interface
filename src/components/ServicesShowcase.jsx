@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './ServicesShowcase.css';
+import '../css/ServicesShowcase.css';
 import andhraLogo from '../assets/images/andhra-canteen-logo.png';
 import sudhaLogo from '../assets/images/sudha-logo.png';
 import brochureImg from '../assets/images/service-sudha-brochure-new.png';

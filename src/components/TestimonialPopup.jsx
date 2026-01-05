@@ -1,5 +1,5 @@
 import React from 'react';
-import './TestimonialPopup.css';
+import '../css/TestimonialPopup.css';
 
 const TestimonialPopup = ({ onClose }) => {
     return (

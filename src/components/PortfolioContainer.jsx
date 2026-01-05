@@ -4,7 +4,7 @@ import ServicesShowcase from './ServicesShowcase';
 import DummySection from './DummySection';
 import Background from './Background';
 
-import './PortfolioContainer.css';
+import '../css/PortfolioContainer.css';
 
 const PortfolioContainer = () => {
     return (

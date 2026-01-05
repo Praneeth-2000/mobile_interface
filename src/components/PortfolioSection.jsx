@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './PortfolioSection.css';
+import '../css/PortfolioSection.css';
 import portfolioScreen from '../assets/images/portfolio-screen.png';
 import accel1Logo from '../assets/images/accel1-logo.png';
 import TestimonialPopup from './TestimonialPopup';

@@ -1,5 +1,5 @@
 import React from 'react';
-import './DummySection.css';
+import '../css/DummySection.css';
 
 const dummyItems = [
     {
@@ -13,10 +13,6 @@ const dummyItems = [
     {
         title: 'Design Execution',
         description: 'Crafting premium visuals and interfaces that resonate with your brand identity.'
-    },
-    {
-        title: 'Quality Assurance',
-        description: 'Rigorous testing to ensure every detail meets our high standards of excellence.'
     },
     {
         title: 'Quality Assurance',
