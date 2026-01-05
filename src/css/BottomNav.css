@@ -10,7 +10,8 @@
 }
 
 .bottom-nav {
-    width: 360px;
+    width: 90%;
+    max-width: 360px;
     height: 68px;
     border-radius: 34px;
     border: 1px solid rgba(56, 136, 7, 0.20);

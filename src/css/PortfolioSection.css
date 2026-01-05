@@ -228,58 +228,39 @@
     position: relative;
     z-index: 1;
     font-family: var(--font-hand);
-    font-size: 1.2rem;
-    line-height: 1.2;
+    font-size: 1.15rem;
+    line-height: 1.4;
     color: #333;
+    padding: 0 10px;
 }
 
-.green-blob {
+.hand-container {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.green-blob::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #c8e6c9;
-    /* Light Green */
-    border-radius: 50%;
-    filter: blur(15px);
-    opacity: 0.8;
-    z-index: -1;
-}
-
-.green-blob svg {
-    position: relative;
+    width: 30px;
+    height: 36px;
     z-index: 2;
-    filter: none;
-    /* Ensure no blur inherited */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
 }
 
-.blob-left {
-    top: 20px;
-    left: -20px;
-    transform: rotate(-30deg);
+.hand-left {
+    bottom: -12px;
+    left: -15px;
+    transform: rotate(-15deg);
 }
 
-.blob-right {
-    bottom: 20px;
-    right: -20px;
-    transform: rotate(150deg);
+.hand-right {
+    bottom: -12px;
+    right: -15px;
+    transform: rotate(15deg);
 }
 
-.blob-right::before {
-    background: #a5d6a7;
-    /* Medium Green */
+.info-card:hover .hand-left {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.info-card:hover .hand-right {
+    transform: rotate(5deg) scale(1.1);
 }
 
 /* Dark overlay and testimonial card */

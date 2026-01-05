@@ -162,8 +162,10 @@
 }
 
 .work-grid-wrapper {
-    width: 300px;
-    height: 301px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     border-radius: 0px;
     overflow: hidden;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
