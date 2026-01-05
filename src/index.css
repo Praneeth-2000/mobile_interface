@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary-green: #5ca32a;
+  --text-dark: #1a1a1a;
+  --bg-light: #ffffff;
+  --nav-bg: #ffffff;
+  --whatsapp-green: #25d366;
+  --border-light: rgba(0, 0, 0, 0.05);
+  --shadow-main: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --font-hand: 'Caveat', cursive;
+  --font-main: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: #f5f5f5;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  max-width: 430px;
+  /* Standard mobile max width */
+  background: var(--bg-light);
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}

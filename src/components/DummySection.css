@@ -1,0 +1,70 @@
+.dummy-section {
+    padding: 60px 20px;
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dummy-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dummy-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.dummy-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.dummy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dummy-card {
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dummy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.dummy-card-number {
+    font-size: 0.8rem;
+    color: #4CAF50;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.dummy-card-title {
+    font-size: 1.25rem;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.dummy-card-description {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}

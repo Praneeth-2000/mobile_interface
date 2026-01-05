@@ -1,0 +1,82 @@
+.bottom-nav-container {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.bottom-nav {
+    width: 360px;
+    height: 68px;
+    border-radius: 34px;
+    border: 1px solid rgba(56, 136, 7, 0.20);
+    background: #FFF;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    pointer-events: auto;
+    box-sizing: border-box;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    padding: 6px 10px;
+    transition: all 0.2s;
+    text-decoration: none;
+    min-width: 60px;
+    height: 48px;
+    box-sizing: border-box;
+}
+
+.nav-icon {
+    width: 28px;
+    height: 28px;
+    transition: fill 0.2s;
+}
+
+.nav-label {
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+    text-transform: lowercase;
+}
+
+.whatsapp-nav-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-circle {
+    width: 48px;
+    height: 48px;
+    background: #00ca11;
+    /* Vibrant WhatsApp green from image */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 202, 17, 0.4);
+    transition: transform 0.2s;
+}
+
+.whatsapp-circle:hover {
+    transform: scale(1.05);
+}
