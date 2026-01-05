@@ -11,7 +11,7 @@ const PortfolioSection = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     return (
-        <div className="portfolio-section">
+        <div className="portfolio-section" style={{ minHeight: 'unset', paddingBottom: '20px' }}>
             <p className="portfolio-description">
                 We craft responsive, SEO-optimized websites that empower business transform their online presence.
             </p>
@@ -64,9 +64,12 @@ const PortfolioSection = () => {
                         <path d="M24.7921 18.4938C24.1674 16.3365 21.8908 15.0815 19.7316 15.7069L5.68228 19.7865C3.52729 20.4118 2.2737 22.6908 2.8984 24.8524C3.52309 27.0097 5.79967 28.2646 7.95884 27.6392L22.0082 23.5597C24.1632 22.9343 25.4167 20.6553 24.7921 18.4938Z" fill="#F4AEAE" />
                     </svg>
                 </div>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
-                </p>
+                <div className="card-testimonial-content">
+                    <p className="card-testimonial-text">
+                        "Our collaboration with eparivartan has been nothing short of remarkable. We have witnessed a significant enhancement in our branding efforts."
+                    </p>
+                    <p className="card-testimonial-author">Sanjay Kommera - CEO</p>
+                </div>
             </div>
 
             {/* Testimonial Popup Component */}

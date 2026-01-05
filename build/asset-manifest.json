@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.18e48f4a.css",
+    "main.js": "/static/js/main.59c6fbf3.js",
+    "static/js/453.5463f670.chunk.js": "/static/js/453.5463f670.chunk.js",
+    "static/media/hero-bg.png": "/static/media/hero-bg.2ae61beb5aa8a4b55a55.png",
+    "static/media/summer-green-resort.png": "/static/media/summer-green-resort.a83d0344e7315901ef61.png",
+    "static/media/service-sudha-brochure-new.png": "/static/media/service-sudha-brochure-new.9c3536712ea96124f0c5.png",
+    "static/media/portfolio-screen.png": "/static/media/portfolio-screen.aac8a5b60fca59a0a0fe.png",
+    "static/media/alley91-grid-1.png": "/static/media/alley91-grid-1.3be89907634a4739fd1b.png",
+    "static/media/alley91-grid-3.png": "/static/media/alley91-grid-3.6e7da56d6d86dd980f8e.png",
+    "static/media/alley91-grid-6.png": "/static/media/alley91-grid-6.fb1080c32171de397216.png",
+    "static/media/alley91-grid-2.png": "/static/media/alley91-grid-2.db08000e94bc3044ed4d.png",
+    "static/media/alley91-grid-5.png": "/static/media/alley91-grid-5.7d8c210ae041583af677.png",
+    "static/media/alley91-grid-4.png": "/static/media/alley91-grid-4.869a97fa29c9f199ac56.png",
+    "static/media/html5-logo.png": "/static/media/html5-logo.b9520a985f06c13fb17b.png",
+    "index.html": "/index.html",
+    "main.18e48f4a.css.map": "/static/css/main.18e48f4a.css.map",
+    "main.59c6fbf3.js.map": "/static/js/main.59c6fbf3.js.map",
+    "453.5463f670.chunk.js.map": "/static/js/453.5463f670.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18e48f4a.css",
+    "static/js/main.59c6fbf3.js"
+  ]
+}

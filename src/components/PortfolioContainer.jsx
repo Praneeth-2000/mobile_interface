@@ -1,7 +1,6 @@
 import React from 'react';
 import PortfolioSection from './PortfolioSection';
 import ServicesShowcase from './ServicesShowcase';
-import DummySection from './DummySection';
 import Background from './Background';
 
 import '../css/PortfolioContainer.css';
@@ -26,9 +25,6 @@ const PortfolioContainer = () => {
             </div>
             <div id="services-showcase-container">
                 <ServicesShowcase />
-            </div>
-            <div id="dummy-section-container">
-                <DummySection />
             </div>
         </div>
     );

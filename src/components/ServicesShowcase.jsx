@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import '../css/ServicesShowcase.css';
 import andhraLogo from '../assets/images/andhra-canteen-logo.png';
 import sudhaLogo from '../assets/images/sudha-logo.png';
@@ -58,42 +58,35 @@ const ServicesShowcase = () => {
     const [direction, setDirection] = useState(null); // 'up' (next) or 'down' (prev)
     const [isAnimating, setIsAnimating] = useState(false);
     const touchStartY = useRef(0);
+    const sectionRef = useRef(null);
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
         if (isAnimating) return;
 
-        // If at the last service, scroll down to the next section
+        // If at the last service, do nothing (let browser handle boundary scroll)
         if (activeIndex === servicesData.length - 1) {
-            const nextSection = document.getElementById('dummy-section-container');
-            if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
+            return;
         }
 
         setDirection('up'); // Content moving up (entering from bottom)
         setPrevIndex(activeIndex);
         setIsAnimating(true);
         setActiveIndex((prev) => prev + 1);
-    };
+    }, [isAnimating, activeIndex]);
 
-    const handlePrev = () => {
+    const handlePrev = useCallback(() => {
         if (isAnimating) return;
 
-        // If at the first service, scroll up to the previous section
+        // If at the first service, do nothing (let browser handle boundary scroll)
         if (activeIndex === 0) {
-            const prevSection = document.getElementById('portfolio-section-container');
-            if (prevSection) {
-                prevSection.scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
+            return;
         }
 
         setDirection('down'); // Content moving down (entering from top)
         setPrevIndex(activeIndex);
         setIsAnimating(true);
         setActiveIndex((prev) => prev - 1);
-    };
+    }, [isAnimating, activeIndex]);
 
     useEffect(() => {
         if (isAnimating) {
@@ -105,27 +98,57 @@ const ServicesShowcase = () => {
         }
     }, [isAnimating]);
 
+    useEffect(() => {
+        const handleWheel = (e) => {
+            if (isAnimating) {
+                e.preventDefault();
+                return;
+            }
+
+            if (Math.abs(e.deltaY) > 5) {
+                if (e.deltaY > 0) {
+                    // Scrolling DOWN
+                    if (activeIndex < servicesData.length - 1) {
+                        e.preventDefault();
+                        handleNext();
+                    }
+                    // Else: allow natural scroll down past the section
+                } else {
+                    // Scrolling UP
+                    if (activeIndex > 0) {
+                        e.preventDefault();
+                        handlePrev();
+                    }
+                    // Else: allow natural scroll up out of the section
+                }
+            }
+        };
+
+        const section = sectionRef.current;
+        if (section) {
+            section.addEventListener('wheel', handleWheel, { passive: false });
+        }
+
+        return () => {
+            if (section) {
+                section.removeEventListener('wheel', handleWheel);
+            }
+        };
+    }, [isAnimating, activeIndex, handleNext, handlePrev]);
+
     const handleTouchStart = (e) => {
         touchStartY.current = e.touches[0].clientY;
     };
 
-    const handleWheel = (e) => {
-        if (isAnimating) return;
-
-        // e.deltaY > 0 is scroll DOWN -> want NEXT
-        // e.deltaY < 0 is scroll UP -> want PREV
-        if (Math.abs(e.deltaY) > 10) {
-            if (e.deltaY > 0) {
-                handleNext();
-            } else {
-                handlePrev();
-            }
-        }
-    };
-
     const handleTouchMove = (e) => {
         // Prevent default browser scrolling when swiping inside this component
-        if (e.cancelable) e.preventDefault();
+        // Only if we are not at a boundary that should allow page scroll
+        const deltaY = touchStartY.current - e.touches[0].clientY;
+        if (deltaY > 0 && activeIndex < servicesData.length - 1) {
+            if (e.cancelable) e.preventDefault();
+        } else if (deltaY < 0 && activeIndex > 0) {
+            if (e.cancelable) e.preventDefault();
+        }
     };
 
     const handleTouchEnd = (e) => {
@@ -149,7 +172,7 @@ const ServicesShowcase = () => {
     return (
         <section
             className="services-showcase"
-            onWheel={handleWheel}
+            ref={sectionRef}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -204,43 +227,47 @@ const ServicesShowcase = () => {
 
                     {/* Active Content (Entering/Stationary) */}
                     <div className={`content-layer ${isAnimating ? 'enter' : 'active'}`}>
-                        <h3 className="service-subtitle">{currentService.subtitle}</h3>
-                        <div className="featured-work-container">
-                            {currentService.type === 'grid' ? (
-                                <div className="work-grid-wrapper">
-                                    {currentService.images.map((img, index) => (
-                                        <div key={index} className="grid-item">
-                                            <img src={img} alt={`${currentService.subtitle} ${index + 1}`} className="featured-image-grid" />
+                        {currentService ? (
+                            <>
+                                <h3 className="service-subtitle">{currentService.subtitle}</h3>
+                                <div className="featured-work-container">
+                                    {currentService.type === 'grid' ? (
+                                        <div className="work-grid-wrapper">
+                                            {currentService.images && currentService.images.map((img, index) => (
+                                                <div key={index} className="grid-item">
+                                                    <img src={img} alt={`${currentService.subtitle} ${index + 1}`} className="featured-image-grid" />
+                                                </div>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="work-image-wrapper">
-                                    <img src={currentService.image} alt={currentService.subtitle} className="featured-image" />
-                                </div>
-                            )}
-                            <div className="logo-carousel-static">
-                                <button className="nav-arrow left" aria-label="Previous image">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                                </button>
-                                <div className={`logo-display-static ${currentService.id}-logo`}>
-                                    {currentService.logo && (
-                                        <img
-                                            src={currentService.logo}
-                                            alt={currentService.logoAlt || 'Client logo'}
-                                            className="client-logo"
-                                        />
+                                    ) : (
+                                        <div className="work-image-wrapper">
+                                            <img src={currentService.image} alt={currentService.subtitle} className="featured-image" />
+                                        </div>
                                     )}
-                                </div>
+                                    <div className="logo-carousel-static">
+                                        <button className="nav-arrow left" aria-label="Previous image">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                        </button>
+                                        <div className={`logo-display-static ${currentService.id}-logo`}>
+                                            {currentService.logo && (
+                                                <img
+                                                    src={currentService.logo}
+                                                    alt={currentService.logoAlt || 'Client logo'}
+                                                    className="client-logo"
+                                                />
+                                            )}
+                                        </div>
 
-                                <button className="nav-arrow right" aria-label="Next image">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div className="services-pill-bar">
-                            <p className="pill-content">{currentService.pill}</p>
-                        </div>
+                                        <button className="nav-arrow right" aria-label="Next image">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="services-pill-bar">
+                                    <p className="pill-content">{currentService.pill}</p>
+                                </div>
+                            </>
+                        ) : null}
                     </div>
                 </div>
             </div>
