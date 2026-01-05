@@ -17,6 +17,10 @@ const dummyItems = [
     {
         title: 'Quality Assurance',
         description: 'Rigorous testing to ensure every detail meets our high standards of excellence.'
+    },
+    {
+        title: 'Quality Assurance',
+        description: 'Rigorous testing to ensure every detail meets our high standards of excellence.'
     }
 ];
 
